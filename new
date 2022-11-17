@@ -1,0 +1,30 @@
+pipeline {
+
+			agent {
+				
+				label {
+					label 'test02'
+					
+				}
+			}
+
+	stages {
+	
+		stage ('httpd install node2') {
+			
+					
+			steps{ 
+			      dir('/mnt/new/'){
+					sh '''yum install httpd -y
+					systemctl start httpd
+					systemctl status httpd
+					echo "swapnil kapase" >/var/www/html/index.html'''
+				}
+				
+			 }
+			 
+			}
+		
+		}
+		
+	}
